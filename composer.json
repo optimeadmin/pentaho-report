@@ -1,0 +1,13 @@
+{
+    "name": "optimeconsulting/pentaho-report",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Optime\\PentahoReport\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
