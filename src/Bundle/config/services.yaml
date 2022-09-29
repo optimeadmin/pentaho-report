@@ -1,0 +1,21 @@
+parameters:
+  pentaho.url_auth: '%env(PENTAHO_URL_AUTH)%'
+  pentaho.base_uri: '%env(PENTAHO_BASE_URI)%'
+  pentaho.bi_user: '%env(PENTAHO_BI_USER)%'
+  pentaho.bi_pass: '%env(PENTAHO_BI_PASS)%'
+
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Optime\PentahoReport\Bundle\:
+    resource: '../'
+    exclude:
+      - '../DependencyInjection/'
+      - '../OptimePentahoReportBundle.php'
+
+  Optime\PentahoReport\Bundle\Controller\:
+    resource: '../Controller/'
+    tags: [ 'controller.service_arguments' ]
