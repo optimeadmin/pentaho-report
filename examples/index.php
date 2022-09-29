@@ -1,17 +1,17 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once '/vendor/autoload.php';
 
 use Optime\PentahoReport\Lib\ReportBI;
 
 $report = (isset($_GET['report']) && !empty($_GET['report']))?$_GET['report']:null;
-$subLocation = (isset($_GET['subfolder']) && !empty($_GET['subfolder']))?$_GET['subfolder'].':':'';
+$subFolder = (isset($_GET['subfolder']) && !empty($_GET['subfolder']))?$_GET['subfolder']:'';
 
-$urlAuth = '';
-$baseURI = '';
-$biUser = '';
-$biPass = '';
+$urlAuth = PENTAHO_URL_AUTH;
+$baseURI = PENTAHO_BASE_URI;
+$biUser = PENTAHO_BI_USER;
+$biPass = PENTAHO_BI_PASS;
 
-$biService = new ReportBI($urlAuth, $baseURI, $biUser, $biPass);
+$ObjReportBI = new ReportBI($urlAuth, $baseURI, $biUser, $biPass);
 
-$biService->getBIServerReport($report, $subLocation, $_SERVER['QUERY_STRING']);
+$ObjReportBI->getBIServerReport($report, $subFolder, $_SERVER['QUERY_STRING']);

@@ -85,7 +85,7 @@ class ReportBI
         try {
             $this->setBIServerConnection();
 
-            $name = $subFolder . $report . '.prpt/report';
+            $name = $subFolder. ':' . $report . '.prpt/report';
             $urlWS = $this->baseURI . $name;
 
             $response = $this->client->request(
