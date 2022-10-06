@@ -80,8 +80,6 @@ class ReportBI
         ini_set("memory_limit", "-1");
         set_time_limit(0);
 
-        //var_dump($reportParams);die;
-
         try {
             $this->setBIServerConnection();
 
@@ -106,8 +104,6 @@ class ReportBI
 
             // Obtencion de los Headers a utilizar posteriormente
             $responseHeaders = $response->getHeaders();
-
-            //var_dump($responseHeaders);die;
 
             // Obtencion del filename
             $responseContentDisposition = explode(';', $responseHeaders['content-disposition'][0]);
