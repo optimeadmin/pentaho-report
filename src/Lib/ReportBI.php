@@ -64,8 +64,11 @@ class ReportBI
             'POST',
             $this->urlAuth,
             [
-                'auth' => [$this->biUser, $this->biPass],
-                'cookies' => $this->cookieJar,
+                'auth' => [
+                    $this->biUser,
+                    $this->biPass
+                ],
+                'cookies' => $this->cookieJar
             ]
         );
 
@@ -80,7 +83,7 @@ class ReportBI
         ini_set("memory_limit", "-1");
         set_time_limit(0);
 
-        try {
+
             $this->setBIServerConnection();
 
             $name = '';
@@ -101,6 +104,9 @@ class ReportBI
                 )
             );
 
+            if($response->getStatusCode() == 500){
+                throw new \Exception("Error downloading the report. Please check the connection data and try again");
+            }
 
             // Obtencion de los Headers a utilizar posteriormente
             $responseHeaders = $response->getHeaders();
@@ -134,8 +140,6 @@ class ReportBI
             echo $result['bodyContent'];
             flush();
             fclose($fp);
-        }catch (GuzzleException $e) {
-            echo 'Uh oh! ' . $e->getMessage();
-        }
+
     }
 }

@@ -24,7 +24,7 @@ class ReportService
         $this->bag = $bag;
     }
 
-    public function downloadReport($report, $subfolder, $reportParams)
+    public function downloadReport($report, $subfolder=null, $reportParams=null)
     {
         $urlAuth = $this->bag->get('pentaho.url_auth');
         $baseURI = $this->bag->get('pentaho.base_uri');
@@ -33,6 +33,7 @@ class ReportService
 
         $report = (is_null($report)) ? '' : $report;
         $subfolder = (is_null($subfolder)) ? '' : $subfolder;
+        $reportParams = (is_null($reportParams)) ? '' : $reportParams;
 
         $reportBI = new ReportBI($urlAuth, $baseURI, $biUser, $biPass);
 
