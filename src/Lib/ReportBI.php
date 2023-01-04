@@ -135,7 +135,7 @@ class ReportBI
             header('Content-Length: ' . strlen($result['bodyContent']));
             header('Content-Type:' . $result['contentType'] . '');
 
-            if (ob_get_length()) ob_clean();
+            //if (ob_get_length()) ob_clean();
             flush();
             echo $result['bodyContent'];
             flush();
