@@ -103,6 +103,8 @@ class ReportBI
                     'stream' => true,
                 )
             );
+        
+            dd($response->getStatusCode());
 
             if($response->getStatusCode() == 500){
                 throw new \Exception("Error downloading the report. Please check the connection data and try again");
